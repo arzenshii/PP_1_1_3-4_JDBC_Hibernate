@@ -5,11 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Util {
-    // Настройки подключения - ИЗМЕНИТЕ ЭТИ ЧЕТЫРЕ ЗНАЧЕНИЯ НА СВОИ
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/kata_db"; // Замените имя_вашей_базы
-    private static final String DB_USERNAME = "root"; // Обычно 'root', но может быть другой
-    private static final String DB_PASSWORD = "SHI18FCKKK"; // Ваш пароль от MySQL
-    private static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver"; // Драйвер для MySQL 8+
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/kata_db";
+    private static final String DB_USERNAME = "root";
+    private static final String DB_PASSWORD = "SHI18FCKKK";
+    private static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
 
     public static Connection getConnection() {
         Connection connection = null;
