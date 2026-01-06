@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Util {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/kata_db";
     private static final String DB_USERNAME = "root";
-    private static final String DB_PASSWORD = "SHI18FCKKK";
+    private static final String DB_PASSWORD = "<SHI-e21h180w75>";
     private static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
 
     public static Connection getConnection() {
