@@ -2,7 +2,7 @@ package jm.task.core.jdbc.util;
 
 import java.sql.Connection;
 
-public class TestConnection {
+public class TestConnectionJDBC {
     public static void main(String[] args) {
         System.out.println("=== Тестируем подключение к БД ===");
 

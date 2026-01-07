@@ -1,5 +1,11 @@
 package jm.task.core.jdbc.util;
 
+import jm.task.core.jdbc.model.User;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.cfg.Environment;
+
+import java.util.Properties;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -9,6 +15,8 @@ public class Util {
     private static final String DB_USERNAME = "root";
     private static final String DB_PASSWORD = "<SHI-e21h180w75>";
     private static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
+
+    private static SessionFactory sessionFactory;
 
     public static Connection getConnection() {
         Connection connection = null;
@@ -26,5 +34,31 @@ public class Util {
         }
         return connection;
     }
+    public static SessionFactory getSessionFactory() {
+        if (sessionFactory == null) {
+            try {
+                Configuration configuration = new Configuration();
+
+                Properties properties = new Properties();
+                properties.put(Environment.DRIVER, DB_DRIVER);
+                properties.put(Environment.URL, DB_URL);
+                properties.put(Environment.USER, DB_USERNAME);
+                properties.put(Environment.PASS, DB_PASSWORD);
+                properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
+                properties.put(Environment.SHOW_SQL, "true");
+
+                configuration.setProperties(properties);
+                configuration.addAnnotatedClass(User.class);
+
+                sessionFactory = configuration.buildSessionFactory();
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new RuntimeException("Ошибка создания SessionFactory");
+            }
+        }
+        return sessionFactory;
+    }
 }
+
+
 
